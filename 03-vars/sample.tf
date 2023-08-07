@@ -16,7 +16,7 @@ variable "fruits" {
 }
 
 #Map variable
-Variable "fruit_stock" {
+variable "fruit_stock" {
   default = {
     apple = 100
     banana = 200
