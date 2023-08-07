@@ -40,3 +40,8 @@ variable "fruit_stock_with_price" {
 output "fruits_first" {
   value = var.fruits[0]
 }
+
+#Access map variable
+output "fruit_stock_apple" {
+  value = var.fruit_stock["apple"]
+}
