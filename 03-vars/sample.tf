@@ -39,6 +39,7 @@ variable "fruit_stock_with_price" {
 # Access list variable, list index starts from zero
 output "fruits_first" {
   value = var.fruits[0]
+  // value = element{var.fruits, 0} this is using functions
 }
 
 #Access map variable
