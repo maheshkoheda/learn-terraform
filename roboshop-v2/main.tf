@@ -34,10 +34,10 @@ resource "aws_instance" "instance" {
   instance_type = var.instance_type
   vpc_security_group_ids = var.security_groups
 
-#  tags = {
-#    Name = lookup(var.components, each.key, null)
-#  }
-#}
+  tags = {
+    Name = lookup(each.value, each.key, null)
+  }
+}
 
 #resource "aws_route53_record" "record" {
 #  for_each = var.components
@@ -48,6 +48,6 @@ resource "aws_instance" "instance" {
 #  records = [lookup(aws_instance.instance,each.key[""]]
 #}
 
-output "instances" {
-  value = aws_instance.instance
-}
+#output "instances" {
+#  value = aws_instance.instance
+#}
