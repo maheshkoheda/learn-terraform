@@ -10,10 +10,12 @@
   }
 
   resource "aws_instance" "instance" {
-
     ami                    = data.aws_ami.ami.id
-    instance_type          = "t3.small"
-    vpc_security_group_ids = ["sg-01eb9b07e2a904b4d"]
+    instance_type          = var.instance_type
+    vpc_security_group_ids = [ "sg-01eb9b07e2a904b4d" ]
     }
+
+  variable "instance_type" ()
+
 
 
