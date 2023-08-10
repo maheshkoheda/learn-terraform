@@ -15,7 +15,7 @@
     vpc_security_group_ids = [ "sg-01eb9b07e2a904b4d" ]
     }
 
-  variable "instance_type" ()
+  variable "instance_type" {}
 
 
 
