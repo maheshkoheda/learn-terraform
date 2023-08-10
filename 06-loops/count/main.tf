@@ -8,6 +8,8 @@ resource "aws_instance" "instance" {
   instance_type          = "t3.small"
   vpc_security_group_ids = ["sg-01eb9b07e2a904b4d"]
   tags                   = {
-    Name = ""
+    //Name = var.components[count.index]
+    Name = element(var.components, count.index)
   }
 }
+
