@@ -15,16 +15,16 @@ variable "zone_id" {
 }
 variable "components" {
   default = {
-    frontend = {}
-    catalogue = {}
-    mongodb = {}
-    user = {}
-    redis = {}
-    cart = {}
-    mysql = {}
-    shipping = {}
-    payment = {}
-    rabbitmq = {}
+    frontend = { name = "frontend-dev" }
+    catalogue = { name = "catalogue-dev" }
+    mongodb = { name = "mongodb-dev" }
+    user = { name = "user-dev" }
+    redis = { name = "redis-dev" }
+    cart = { name = "cart-dev" }
+    mysql = { name = "mysql-dev" }
+    shipping = { name = "shipping-dev" }
+    payment = { name = "payment-dev" }
+    rabbitmq = { name = "rabbitmq-dev" }
 
   }
 }
@@ -35,14 +35,14 @@ resource "aws_instance" "instance" {
   vpc_security_group_ids = var.security_groups
 
   tags = {
-    Name = lookup(each.value, each.key, null)
+    Name = lookup(each.value, "name", null)
   }
 }
 
 resource "aws_route53_record" "record" {
   for_each = var.components
   zone_id = var.zone_id
-  name    = "${lookup(each.value, each.key, null)}.maheshkoheda.online"
+  name    = "${lookup(each.value, "name", null)}.maheshkoheda.online"
   type    = "A"
   ttl     = 300
   records = [lookup(lookup(aws_instance.instance,each.key, null),"private_ip", null) ]
