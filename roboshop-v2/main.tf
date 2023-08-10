@@ -39,14 +39,14 @@ resource "aws_instance" "instance" {
   }
 }
 
-#resource "aws_route53_record" "record" {
-#  for_each = var.components
-#  zone_id = var.zone_id
-#  name    = "frontend-dev.maheshkoheda.online"
-#  type    = "A"
-#  ttl     = 300
-#  records = [lookup(aws_instance.instance,each.key[""]]
-#}
+resource "aws_route53_record" "record" {
+  for_each = var.components
+  zone_id = var.zone_id
+  name    = "${lookup(each.value, each.key, null)}.maheshkoheda.online"
+  type    = "A"
+  ttl     = 300
+  records = [lookup(lookup(aws_instance.instance,each.key, null),"private_ip", null) ]
+}
 
 output "instances" {
   value = aws_instance.instance
