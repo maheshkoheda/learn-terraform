@@ -1,5 +1,5 @@
 variable "test" {}
 
-outout "test" {
+output "test" {
   value = var.test
 }
