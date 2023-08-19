@@ -21,6 +21,6 @@ db2 = { cidr = "10.0.3.0/16", az   = "us-east-1b" }
 }
 
 output "all_subnets" {
-  value = var.vpc["main"]["subnets"]
+  value = [ for k,v in var.vpc["main"]["subnets"] : v ]
 
 }
