@@ -6,7 +6,7 @@
     Name = "frontend"
   }
 }
-
+#security group id changed
 resource "aws_route53_record" "frontend" {
   zone_id = "Z05775253JDMGSEH85KOY"
   name    = "frontend-dev.maheshkoheda.online"
