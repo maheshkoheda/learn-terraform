@@ -1,5 +1,5 @@
 variable "security_groups" {
-  default = [ "sg-01eb9b07e2a904b4d" ]
+  default = [ "sg-0cb2694d9239346f4" ]
 }
 
 variable "zone_id" {
