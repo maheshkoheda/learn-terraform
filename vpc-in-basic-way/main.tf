@@ -1,3 +1,6 @@
+#Below is bad way of coding since we do not know which subnet belongs to which availability zone and
+#also if we change order or delete a cidr here the count function will throw errors
+#good way is env-dev main.tfvars and map is good to use.
 variable "cidr" {
   default = "10.0.0.0/16"
 }
@@ -13,9 +16,6 @@ variable "app_subnets" {
 variable "db_subnets" {
   default = ["10.0.5.0/24", "10.0.4.0/24"]
 }
-
-
-
 
 
 resource "aws_vpc" "main" {
